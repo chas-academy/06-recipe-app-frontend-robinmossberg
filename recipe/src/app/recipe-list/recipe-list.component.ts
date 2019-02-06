@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeDetailsComponent } from "../recipe-details/recipe-details.component.spec";
+// import { RecipeDetailsComponent } from "../recipe-details/recipe-details.component.spec";
 import { RecipeService } from "../recipe.service";
+import { Recipe } from '../recipe';
+import { YummlyService } from "../yummly.service";
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,13 +11,28 @@ import { RecipeService } from "../recipe.service";
 })
 export class RecipeListComponent implements OnInit {
 
-  getRecipes(): void {
-    this.recipes = this.RecipeService.getRecipes();
-  }getRecipes
+  recipes: Recipe[];
+  recipePictures = [];
+  
+  constructor(private recipeService: RecipeService,
+    private yummlyservice: YummlyService) { 
 
-  constructor() { }
+  }
+  getRecipes(): void {
+  }
+  
+
 
   ngOnInit() {
+    this.yummlyservice.getYummlyRecipes('onion soup').subscribe(data =>{
+      data.matches.forEach(element => {
+        console.log(element.imageUrlsBySize)
+        this.recipePictures.push(element.imageUrlsBySize[90])
+        
+      });
+      console.log(this.recipePictures)
+    });
+
   }
 
 }
