@@ -9,13 +9,7 @@ import { Recipe } from '../recipe';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  recipe: Recipe = {
-    id: 1,
-    name: 'machosallad',
-    ingredients: ['onion', 'letteuce', 'tomato'],
-    instruction: 'smash and bash stuff together',
-
-  }
+ 
 
   constructor() { }
 

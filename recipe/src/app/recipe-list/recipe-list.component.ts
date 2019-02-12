@@ -13,26 +13,27 @@ export class RecipeListComponent implements OnInit {
 
   recipes: Recipe[];
   recipePictures = [];
+  recipeName = [];
+  recipeThumbNail = [];
   
   constructor(private recipeService: RecipeService,
     private yummlyservice: YummlyService) { 
 
   }
   getRecipes(): void {
+    this.yummlyservice.getYummlyRecipes('onion soup').subscribe(data =>{
+      data.matches.forEach(element => {
+        // this.recipePictures.push(element.imageUrlsBySize[90])
+        // this.recipeName.push(element.recipeName)
+        this.recipeThumbNail.push(element)
+        console.log(element);
+      });
+    });
   }
   
 
 
   ngOnInit() {
-    this.yummlyservice.getYummlyRecipes('onion soup').subscribe(data =>{
-      data.matches.forEach(element => {
-        console.log(element.imageUrlsBySize)
-        this.recipePictures.push(element.imageUrlsBySize[90])
-        
-      });
-      console.log(this.recipePictures)
-    });
-
   }
 
 }

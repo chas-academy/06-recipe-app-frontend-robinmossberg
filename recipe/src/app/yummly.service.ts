@@ -17,7 +17,7 @@ export class YummlyService {
     this.searchString = q + '&requirePictures=true';
     return this.http.get<any>(`http://api.yummly.com/v1/api/recipes?_app_id=${this.apiId}&_app_key=${this.apiKey}&q=${this.searchString}`
     )
-  }
+  } 
 }
 
 
