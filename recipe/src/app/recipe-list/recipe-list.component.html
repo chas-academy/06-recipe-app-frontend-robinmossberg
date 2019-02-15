@@ -1,7 +1,12 @@
-
+<div>
+  <input #searchBox type="text" placeholder="Search for yummy stuff.."/>
+  <button (click)="getRecipes(searchBox.value)">Search</button>
+</div>
+<h2>Recipes</h2>
 <ul>
-  <li *ngFor="let i of recipeThumbNail">
-    <img src={{i.imageUrlsBySize[90]}} alt="">
-    <p>{{i.recipeName}}</p>
+  <p></p>
+  <li *ngFor="let i of recipes">
+    <a (click)="showRecipeDetails(i.id)" routerLink="/recipe-details/{{i.id}}" routerLinkActive="active">{{ i.recipeName }}</a>
+    <img src="{{i.imageUrlsBySize[90]}}" alt="">
   </li>
 </ul>

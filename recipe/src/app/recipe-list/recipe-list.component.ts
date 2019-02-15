@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-// import { RecipeDetailsComponent } from "../recipe-details/recipe-details.component.spec";
+import { Component, OnInit, NgModule, Input } from '@angular/core';
+
 import { RecipeService } from "../recipe.service";
-import { Recipe } from '../recipe';
 import { YummlyService } from "../yummly.service";
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,29 +12,34 @@ import { YummlyService } from "../yummly.service";
 })
 export class RecipeListComponent implements OnInit {
 
-  recipes: Recipe[];
-  recipePictures = [];
-  recipeName = [];
-  recipeThumbNail = [];
-  
   constructor(private recipeService: RecipeService,
-    private yummlyservice: YummlyService) { 
+    private yummlyService: YummlyService,
+    ) {}
 
-  }
-  getRecipes(): void {
-    this.yummlyservice.getYummlyRecipes('onion soup').subscribe(data =>{
+
+  message:string;
+  recipes=[];
+  yummly: Subscription;
+  
+
+  getRecipes(e) {
+    this.yummly = this.yummlyService.getYummlyRecipes(e).subscribe(data => {
       data.matches.forEach(element => {
-        // this.recipePictures.push(element.imageUrlsBySize[90])
-        // this.recipeName.push(element.recipeName)
-        this.recipeThumbNail.push(element)
-        console.log(element);
+        this.recipes.push(element)
       });
     });
+    
   }
   
+  showRecipeDetails(e){
+    this.recipeService.changeMessage(e);
+      // console.log(e)
+    
+  }
 
 
   ngOnInit() {
+    this.recipeService.currentMessage.subscribe(message=> this.message = message)
   }
 
 }

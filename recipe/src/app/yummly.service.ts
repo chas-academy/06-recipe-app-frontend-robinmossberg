@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { query } from '@angular/core/src/render3';
+import { AppComponent } from "./app.component";
 
 @Injectable({
   providedIn: 'root'
 })
-export class YummlyService {
+export class YummlyService{
   constructor(private http: HttpClient) { }
+
 
   searchString: string;
   q: string;

@@ -2,11 +2,9 @@
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
-    <input type="text" placeholder="Search for yummy stuff..">
-    <button type="submit" onclick="getRecipes()">Search</button>
-    <app-recipe-list></app-recipe-list>
-    <app-recipe-details></app-recipe-details>
-  </h1>
+    </h1>
+  <!-- <app-recipe-list></app-recipe-list> -->
+  <!-- <app-recipe-details></app-recipe-details> -->
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
