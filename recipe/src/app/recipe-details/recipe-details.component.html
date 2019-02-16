@@ -1,4 +1,8 @@
- <h1>
-     List-Component
- </h1>
- <h2>{{ message }}</h2>
+ <h1>{{ message.recipeName }}</h1>
+ <img src="{{message.imageUrlsBySize[90]}}" alt="">
+
+ <ul>
+    <li *ngFor="let ingredient of recipe.ingredientLines">
+        {{ingredient}}
+    </li>
+ </ul>

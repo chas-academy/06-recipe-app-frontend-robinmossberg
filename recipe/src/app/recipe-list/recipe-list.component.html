@@ -6,7 +6,7 @@
 <ul>
   <p></p>
   <li *ngFor="let i of recipes">
-    <a (click)="showRecipeDetails(i.id)" routerLink="/recipe-details/{{i.id}}" routerLinkActive="active">{{ i.recipeName }}</a>
+    <a (click)="showRecipeDetails(i)" routerLink="/recipe-details/{{i.id}}" routerLinkActive="active">{{ i.recipeName }}</a>
     <img src="{{i.imageUrlsBySize[90]}}" alt="">
   </li>
 </ul>

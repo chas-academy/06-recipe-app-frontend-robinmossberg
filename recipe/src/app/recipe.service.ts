@@ -6,7 +6,7 @@ import { BehaviorSubject } from "rxjs";
 })
 export class RecipeService {
   
-  private messageSource = new BehaviorSubject<string>("default-message");
+  private messageSource = new BehaviorSubject<any>("default-message");
   currentMessage = this.messageSource.asObservable();
 
 

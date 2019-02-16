@@ -9,7 +9,17 @@ import { AppComponent } from "./app.component";
 export class YummlyService{
   constructor(private http: HttpClient) { }
 
+  // "https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free"
 
+  // searchString: string;
+  // q: string;
+  // apiId = 'ed8ca186';
+  // apiKey = 'a63f7715c338eba6b9a2da2e726e1471';
+  // getYummlyRecipes = (q: string) => {
+  //   q = encodeURIComponent(q.trim())
+  //   return this.http.get<any>(`https://api.edamam.com/search?q=${q}&app_id=${this.apiId}&app_key=${this.apiKey}`
+  //   )
+  // } 
   searchString: string;
   q: string;
   apiId = '904755f8';

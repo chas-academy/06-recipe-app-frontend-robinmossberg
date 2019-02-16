@@ -28,12 +28,13 @@ export class RecipeListComponent implements OnInit {
         this.recipes.push(element)
       });
     });
+    // console.log(this.recipes)
     
   }
   
   showRecipeDetails(e){
+  
     this.recipeService.changeMessage(e);
-      // console.log(e)
     
   }
 
