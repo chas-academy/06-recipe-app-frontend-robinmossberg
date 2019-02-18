@@ -35,12 +35,12 @@ export class RecipeDetailsComponent implements OnInit {
     this.getYummlyRecipe(e).subscribe(data => {
       this.recipe = data;
       console.log(this.recipe);
-      debugger;
     });
 
     
   }
     getYummlyRecipe = (q: any) => {
+      console.log(q)
       this.searchString = q.id;
       console.log(this.searchString);
       return this.http.get(`http://api.yummly.com/v1/api/recipe/${this.searchString}?_app_id=${this.apiId}&_app_key=${this.apiKey}`

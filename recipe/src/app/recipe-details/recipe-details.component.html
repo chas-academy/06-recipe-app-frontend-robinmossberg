@@ -1,8 +1,19 @@
- <h1>{{ message.recipeName }}</h1>
- <img src="{{message.imageUrlsBySize[90]}}" alt="">
+<h1>{{ message.recipeName }}</h1>
+<img src="{{ recipe.images[0].hostedLargeUrl }}" alt="" />
 
- <ul>
-    <li *ngFor="let ingredient of recipe.ingredientLines">
-        {{ingredient}}
-    </li>
- </ul>
+<div>
+  <h3>{{ recipe.yield }}</h3>
+</div>
+
+<div>
+  <h3>Total time {{ recipe.totalTime }}</h3>
+</div>
+
+<ul>
+  <li *ngFor="let ingredient of recipe.ingredientLines">
+    {{ ingredient }}
+  </li>
+</ul>
+
+<button><a href="{{ recipe.source.sourceRecipeUrl }}">Source</a></button>
+<button>Add to Fayves</button>

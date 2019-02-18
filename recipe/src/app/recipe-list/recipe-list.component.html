@@ -1,12 +1,44 @@
 <div>
-  <input #searchBox type="text" placeholder="Search for yummy stuff.."/>
-  <button (click)="getRecipes(searchBox.value)">Search</button>
+  <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+  <input #searchBox type="text" name="search" placeholder="Search for yummy stuff.." required ngModel/>
+  <!-- <button (click)="getRecipes(searchBox.value)">Search</button> -->
+  <div>
+    <h3>Food preferences</h3>
+    <input type="checkbox" name="Vegetarian" id="" value="Vegetarian" ngModel>Vegetarian
+    <input type="checkbox" name="Vegan" id="" value="vegan" ngModel>Vegan
+    <input type="checkbox" name="Pescetarian" id="" value="pescetarian" ngModel>Pescetarian
+  </div>
+  <div>
+    <h3>Type of dish</h3>
+    <input type="checkbox" name="Starter" id="" value="appetizers" ngModel>Appetizers
+    <input type="checkbox" name="Main" id="" value="main dishes" ngModel>Main Dishes
+    <input type="checkbox" name="Dessert" id="" value="dessert" ngModel>Dessert
+    <input type="checkbox" name="Dessert" id="" value="beverages" ngModel>Beverages
+  </div>
+  <div>
+    <h3>Allergies</h3>
+    <input type="checkbox" name="Dairy" id="" value="Dairy" ngModel>Dairy
+    <!-- <input type="checkbox" name="Egg" id="" value="Egg" ngModel>Egg -->
+    <input type="checkbox" name="Gluten" id="" value="Gluten" ngModel>Gluten
+    <!-- <input type="checkbox" name="Peanut" id="" value="Peanut" ngModel>Peanut
+    <input type="checkbox" name="Seafood" id="" value="Seafood" ngModel>Seafood
+    <input type="checkbox" name="Sesame" id="" value="Sesame" ngModel>Sesame
+    <input type="checkbox" name="Soy" id="" value="Soy" ngModel>Soy
+    <input type="checkbox" name="Sulfite" id="" value="Sulfite" ngModel>Sulfite
+    <input type="checkbox" name="Tree Nut" id="" value="Tree Nut" ngModel>Tree Nut
+    <input type="checkbox" name="Wheat" id="" value="Wheat" ngModel>Wheat     -->
+  </div>
+  <button type="submit">Search</button>
+</form>
 </div>
 <h2>Recipes</h2>
-<ul>
-  <p></p>
-  <li *ngFor="let i of recipes">
-    <a (click)="showRecipeDetails(i)" routerLink="/recipe-details/{{i.id}}" routerLinkActive="active">{{ i.recipeName }}</a>
-    <img src="{{i.imageUrlsBySize[90]}}" alt="">
+<div >
+<ul class="container">
+  <li *ngFor="let i of recipes" class="col" style="width: 18rem;">
+      <div class="card">
+      <img src="{{i.imageUrlsBySize[90]}}" alt="" class="card-img-top">
+        <a (click)="showRecipeDetails(i)" routerLink="/recipe-details/{{i.id}}" routerLinkActive="active">{{ i.recipeName }}</a>
+      </div>
   </li>
 </ul>
+</div>
