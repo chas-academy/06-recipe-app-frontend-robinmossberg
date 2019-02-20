@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { RecipeService } from "../recipe.service";
 import { YummlyService } from "../yummly.service";
 import { Subscription } from "rxjs";
+import { FavoritesService } from "../favorites.service";
 
 @Component({
   selector: "app-recipe-list",
@@ -23,7 +24,8 @@ export class RecipeListComponent implements OnInit {
 
   constructor(
     private recipeService: RecipeService,
-    private yummlyService: YummlyService
+    private yummlyService: YummlyService,
+    private favoriteService: FavoritesService
   ) {}
   
 
@@ -60,6 +62,10 @@ export class RecipeListComponent implements OnInit {
 
   showRecipeDetails(e) {
     this.recipeService.changeMessage(e);
+  }
+
+  sendToFavs(save){
+    this.favoriteService.saveToFavorites(save);
   }
 
   ngOnInit() {

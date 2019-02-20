@@ -21,15 +21,6 @@ export class YummlyService{
   //   )
   // } 
  
-  // &allowedDiet=403^Paleo
-  // &allowedDiet=387^Lacto-ovo+vegetarian
-  // &allowedDiet=386^Vegan
-  // &allowedDiet=389^Ovo+vegetarian
-  // &allowedDiet=390^Pescetarian
-  // &allowedDiet=408^Low+FODMAP
-  // &allowedDiet=388^Lacto+vegetarian
-  // &allowedDiet=406^Ketogenic
-  // &q=lemon&taste-pref-appended=true
   
   specialsCourse = ['&allowedCourse[]=course^'];
   stringedSpecials;

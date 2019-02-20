@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { NgForm } from '@angular/forms';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FavoritesComponent } from './favorites/favorites.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeDetailsComponent,
     RecipeListComponent,
+    FavoritesComponent,
     
     
   ],

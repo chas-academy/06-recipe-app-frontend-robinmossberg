@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeListComponent } from "../recipe-list/recipe-list.component";
-import { RecipeService } from "../recipe.service";
 import { HttpClient } from "@angular/common/http";
 
+import { RecipeListComponent } from "../recipe-list/recipe-list.component";
+import { RecipeService } from "../recipe.service";
+import { FavoritesService } from "../favorites.service";
 
 
 @Component({
@@ -17,7 +18,8 @@ export class RecipeDetailsComponent implements OnInit {
   constructor(
       private recipeListComponent: RecipeListComponent,
       private recipeService: RecipeService,
-      private http: HttpClient
+      private http: HttpClient,
+      private favoriteService: FavoritesService
       ) {}
     
 
@@ -30,17 +32,20 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit() {
     this.recipeService.currentMessage.subscribe(message=> this.message = message);
     this.getRecipe(this.message);
-    // console.log(this.special)
   } 
 
   getRecipe(e) {
     this.getYummlyRecipe(e).subscribe(data => {
       this.recipe = data;
-      // console.log(this.recipe);
     });
 
     
   }
+
+  sendToFavs(save){
+    this.favoriteService.saveToFavorites(save);
+  }
+
     getYummlyRecipe = (q: any) => {
       console.log(q)
       this.searchString = q.id;
