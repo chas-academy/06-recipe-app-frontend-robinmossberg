@@ -9,7 +9,6 @@ export class RecipeService {
   private messageSource = new BehaviorSubject<any>("default-message");
   currentMessage = this.messageSource.asObservable();
 
-
   constructor() { }
 
   changeMessage(message: string){

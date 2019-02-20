@@ -20,16 +20,53 @@ export class YummlyService{
   //   return this.http.get<any>(`https://api.edamam.com/search?q=${q}&app_id=${this.apiId}&app_key=${this.apiKey}`
   //   )
   // } 
+ 
+  // &allowedDiet=403^Paleo
+  // &allowedDiet=387^Lacto-ovo+vegetarian
+  // &allowedDiet=386^Vegan
+  // &allowedDiet=389^Ovo+vegetarian
+  // &allowedDiet=390^Pescetarian
+  // &allowedDiet=408^Low+FODMAP
+  // &allowedDiet=388^Lacto+vegetarian
+  // &allowedDiet=406^Ketogenic
+  // &q=lemon&taste-pref-appended=true
+  
+  specialsCourse = ['&allowedCourse[]=course^'];
+  stringedSpecials;
+  trimmedSpecials;
+
+
+  storeSpecials(spc){
+    spc.forEach(element => {
+      this.specialsCourse.push(element);
+    });
+    this.stringedSpecials = this.specialsCourse.join('')
+    console.log(this.stringedSpecials)
+  
+  }
+
+
   searchString: string;
   q: string;
   apiId = '904755f8';
   apiKey = '88591af75ba66b77a07975586e3f64db';
   getYummlyRecipes = (q: string) => {
+   
     q = encodeURIComponent(q.trim())
-    this.searchString = q + '&requirePictures=true';
-    return this.http.get<any>(`http://api.yummly.com/v1/api/recipes?_app_id=${this.apiId}&_app_key=${this.apiKey}&q=${this.searchString}`
-    )
+    
+    this.searchString = q + `&requirePictures=true${this.stringedSpecials}` ;
+    this.searchString = this.searchString.replace(",","");
+    
+    console.log(this.searchString)
+    return this.http.get<any>(`http://api.yummly.com/v1/api/recipes?_app_id=${this.apiId}&_app_key=${this.apiKey}&maxResult=100&start=10&q=${this.searchString}&taste-pref-appended=true`
+    );
   } 
+  
+  
+  resetSpecialCourse(){
+    this.specialsCourse = ['&allowedCourse[]=course^'];
+
+  }
 }
 
 

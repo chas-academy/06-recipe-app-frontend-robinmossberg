@@ -20,6 +20,7 @@ export class RecipeDetailsComponent implements OnInit {
       private http: HttpClient
       ) {}
     
+
     recipe=<any>[];
     searchString: string;
     q: string;
@@ -29,12 +30,13 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit() {
     this.recipeService.currentMessage.subscribe(message=> this.message = message);
     this.getRecipe(this.message);
+    // console.log(this.special)
   } 
 
   getRecipe(e) {
     this.getYummlyRecipe(e).subscribe(data => {
       this.recipe = data;
-      console.log(this.recipe);
+      // console.log(this.recipe);
     });
 
     
@@ -42,7 +44,7 @@ export class RecipeDetailsComponent implements OnInit {
     getYummlyRecipe = (q: any) => {
       console.log(q)
       this.searchString = q.id;
-      console.log(this.searchString);
+      // console.log(this.searchString);
       return this.http.get(`http://api.yummly.com/v1/api/recipe/${this.searchString}?_app_id=${this.apiId}&_app_key=${this.apiKey}`
       )
     

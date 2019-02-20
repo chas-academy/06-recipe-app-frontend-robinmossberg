@@ -12,9 +12,9 @@ import { Subscription } from "rxjs";
 })
 export class RecipeListComponent implements OnInit {
 
-  
-  apiSearch;
-  search;
+
+
+  search; 
   specials = [];
   message: string;
   recipes = [];
@@ -34,20 +34,28 @@ export class RecipeListComponent implements OnInit {
         this.specials.push(key);
       }
     }
-    console.log(this.specials);
-    this.apiSearch = searchForm.value.search + this.specials;
-    this.getRecipes(this.apiSearch);
+    
+    this.getRecipes(searchForm.value.search);
   }
 
   getRecipes(search) {
+    console.log(this.specials)
+    this.yummlyService.storeSpecials(this.specials);
+    this.specials = [];
+    if(!search){
+      console.log('You need to search stuff, Big Nose!')
+      return;
+    }
+    this.recipes = []
     this.yummly = this.yummlyService
       .getYummlyRecipes(search)
       .subscribe(data => {
         data.matches.forEach(element => {
           this.recipes.push(element);
         });
+        this.yummlyService.resetSpecialCourse();
+        console.log(this.recipes)
       });
-    console.log(this.recipes);
   }
 
   showRecipeDetails(e) {

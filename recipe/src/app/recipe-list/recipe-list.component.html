@@ -1,32 +1,36 @@
 <div>
   <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
   <input #searchBox type="text" name="search" placeholder="Search for yummy stuff.." required ngModel/>
-  <!-- <button (click)="getRecipes(searchBox.value)">Search</button> -->
-  <div>
-    <h3>Food preferences</h3>
-    <input type="checkbox" name="Vegetarian" id="" value="Vegetarian" ngModel>Vegetarian
-    <input type="checkbox" name="Vegan" id="" value="vegan" ngModel>Vegan
-    <input type="checkbox" name="Pescetarian" id="" value="pescetarian" ngModel>Pescetarian
-  </div>
   <div>
     <h3>Type of dish</h3>
-    <input type="checkbox" name="Starter" id="" value="appetizers" ngModel>Appetizers
-    <input type="checkbox" name="Main" id="" value="main dishes" ngModel>Main Dishes
-    <input type="checkbox" name="Dessert" id="" value="dessert" ngModel>Dessert
-    <input type="checkbox" name="Dessert" id="" value="beverages" ngModel>Beverages
+    <input type="checkbox" name="course-Appetizers&" id="" value="Appetizers" ngModel>Appetizers
+    <input type="checkbox" name="course-MainDishes&" id="" value="Main Dishes" ngModel>Main Dishes
+    <input type="checkbox" name="course-Desserts&" id="" value="Dessert" ngModel>Dessert
+    <input type="checkbox" name="course-Beverages&" id="" value="Beverages" ngModel>Beverages
+  </div>
+  <div>
+    <h3>Food preferences</h3>
+    <input type="checkbox" name="&allowedDiet=389^Ovo+vegetarian" id="" value="Vegetarian" ngModel>Vegetarian
+    <input type="checkbox" name="&allowedDiet=388^Lacto+vegetarian" id="" value="pescetarian" ngModel>Lacto Vegetarian
+    <input type="checkbox" name="&allowedDiet=387^Lacto-ovo+vegetarian" id="" value="pescetarian" ngModel>Lacto Ovo Vegetarian
+    <input type="checkbox" name="&allowedDiet=386^Vegan" id="" value="vegan" ngModel>Vegan
+    <input type="checkbox" name="&allowedDiet=390^Pescetarian" id="" value="pescetarian" ngModel>Pescetarian
+    <input type="checkbox" name="&allowedDiet=403^Paleo" id="" value="pescetarian" ngModel>Paleo
+    <input type="checkbox" name="&allowedDiet=408^Low+FODMAP" id="" value="pescetarian" ngModel>Low FODMAP
+    <input type="checkbox" name="&allowedDiet=406^Ketogenic" id="" value="pescetarian" ngModel>Ketogenic
   </div>
   <div>
     <h3>Allergies</h3>
-    <input type="checkbox" name="Dairy" id="" value="Dairy" ngModel>Dairy
-    <!-- <input type="checkbox" name="Egg" id="" value="Egg" ngModel>Egg -->
-    <input type="checkbox" name="Gluten" id="" value="Gluten" ngModel>Gluten
-    <!-- <input type="checkbox" name="Peanut" id="" value="Peanut" ngModel>Peanut
-    <input type="checkbox" name="Seafood" id="" value="Seafood" ngModel>Seafood
-    <input type="checkbox" name="Sesame" id="" value="Sesame" ngModel>Sesame
-    <input type="checkbox" name="Soy" id="" value="Soy" ngModel>Soy
-    <input type="checkbox" name="Sulfite" id="" value="Sulfite" ngModel>Sulfite
-    <input type="checkbox" name="Tree Nut" id="" value="Tree Nut" ngModel>Tree Nut
-    <input type="checkbox" name="Wheat" id="" value="Wheat" ngModel>Wheat     -->
+    <input type="checkbox" name="&allowedAllergy[]=396^Dairy-Free" id="" value="Dairy" ngModel>Dairy
+    <input type="checkbox" name="&allowedAllergy[]=397^Egg-Free" id="" value="Egg" ngModel>Egg
+    <input type="checkbox" name="&allowedAllergy[]=393^Gluten-Free" id="" value="Gluten" ngModel>Gluten
+    <input type="checkbox" name="&allowedAllergy[]=394^Peanut-Free" id="" value="Peanut" ngModel>Peanut
+    <input type="checkbox" name="&allowedAllergy[]=398^Seafood-Free" id="" value="Seafood" ngModel>Seafood
+    <input type="checkbox" name="&allowedAllergy[]=399^Sesame-Free" id="" value="Sesame" ngModel>Sesame
+    <input type="checkbox" name="&allowedAllergy[]=400^Soy-Free" id="" value="Soy" ngModel>Soy
+    <input type="checkbox" name="&allowedAllergy[]=401^Sulfite-Free" id="" value="Sulfite" ngModel>Sulfite
+    <input type="checkbox" name="&allowedAllergy[]=395^Tree+Nut-Free" id="" value="Tree Nut" ngModel>Tree Nut
+    <input type="checkbox" name="&allowedAllergy[]=392^Wheat-Free" id="" value="Wheat" ngModel>Wheat    
   </div>
   <button type="submit">Search</button>
 </form>
