@@ -9,7 +9,13 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { NgForm } from '@angular/forms';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { FavoritesComponent } from './favorites/favorites.component'
+import { FavoritesComponent } from './favorites/favorites.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RequestResetComponent } from './password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './password/response-reset/response-reset.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +23,12 @@ import { FavoritesComponent } from './favorites/favorites.component'
     RecipeDetailsComponent,
     RecipeListComponent,
     FavoritesComponent,
+    NavbarComponent,
+    LoginComponent,
+    SignupComponent,
+    ProfileComponent,
+    RequestResetComponent,
+    ResponseResetComponent,
     
     
   ],
