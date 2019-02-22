@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from "../database.service";
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private databaseService: DatabaseService) { }
 
   public form = {
     email: null,
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public error = null;
 
   onSubmit(){
-    this.http.post('http://recipe-backend.test/api/login', this.form).subscribe(data=>
+    this.databaseService.login(this.form).subscribe(data=>
       console.log(data),
       error=> this.handleError(error)
       );

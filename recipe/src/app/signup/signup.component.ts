@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from "../database.service";
 
 
 @Component({
@@ -17,13 +17,13 @@ export class SignupComponent implements OnInit {
   };
 
   public error = [];
-  constructor(private http: HttpClient) { }
+  constructor(private databaseService: DatabaseService) { }
 
   ngOnInit() {
   }
 
   onSubmit(){
-    this.http.post('http://recipe-backend.test/api/signup', this.form).subscribe(data=>
+  this.databaseService.signup(this.form).subscribe(data=>
       console.log(data),
       error=> this.handleError(error)
       );
