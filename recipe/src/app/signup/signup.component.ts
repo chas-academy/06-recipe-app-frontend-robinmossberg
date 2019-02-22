@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from "../database.service";
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -17,18 +17,25 @@ export class SignupComponent implements OnInit {
   };
 
   public error = [];
-  constructor(private databaseService: DatabaseService) { }
+
+  constructor(
+    private databaseService: DatabaseService,
+    private route: Router
+    ) { }
 
   ngOnInit() {
   }
 
   onSubmit(){
-  this.databaseService.signup(this.form).subscribe(data=>
-      console.log(data),
+  this.databaseService.signup(this.form).subscribe(
+      data=> this.sendToLogin(),
       error=> this.handleError(error)
       );
   }
 
+  sendToLogin(){
+    this.route.navigateByUrl('/login')
+  }
   handleError(error){
     this.error= error.error.errors;
   }
