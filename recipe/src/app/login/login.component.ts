@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from "../database.service";
 import { TokenService } from '../token.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private token: TokenService,
-    private route: Router
+    private route: Router,
+    private auth: AuthService
     ) { }
 
   public form = {
@@ -31,8 +33,9 @@ export class LoginComponent implements OnInit {
   }
 
   handleResp(data){
-    this.token.handle(data.access_token);
     this.route.navigateByUrl('/');
+    this.token.handle(data.access_token);
+    this.auth.changeStatus(true);
   }
 
   handleError(error){

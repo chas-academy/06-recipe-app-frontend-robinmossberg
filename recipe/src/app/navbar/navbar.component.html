@@ -1,5 +1,9 @@
-<nav>
-  <a href=""></a>
-  <a routerLink="login">Login</a>
-  <a routerLink="signup">Signup</a>
+<nav class="navbar justify-content-between">
+  <div class=""><a class="navbar-brand" routerLink="/">Recipe Mega Search</a></div>
+  <div>
+    <a class="navbar-brand" href="#" (click)="logOut($event)" *ngIf="loggedIn">LogOut</a>
+    <a class="navbar-brand" routerLink="login" *ngIf="!loggedIn">Login</a>
+    <a class="navbar-brand" routerLink="signup" *ngIf="!loggedIn">Signup</a>
+    <a class="navbar-brand" routerLink="favorites" *ngIf="loggedIn">Profile</a>
+  </div>
 </nav>
